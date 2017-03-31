@@ -1,0 +1,26 @@
+{
+  "name": "eventcalendar",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "express": "^4.15.2",
+    "jquery": "^3.2.1",
+    "jqueryui": "^1.11.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/0291149/ria-finalGroupProject.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/0291149/ria-finalGroupProject/issues"
+  },
+  "homepage": "https://github.com/0291149/ria-finalGroupProject#readme"
+}
