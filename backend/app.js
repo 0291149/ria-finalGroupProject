@@ -7,6 +7,9 @@ var bodyParser = require('body-parser');
 
 //my sql modules
 
+var connection = require('express-myconnection');
+var mysql = require('mysql');
+
 var index = require('./routes/index');
 var users = require('./routes/users');
 var events = require('./routes/events');
@@ -23,16 +26,19 @@ app.use(function(req, res, next){
 });
 
 //define our mysql connection
-var mysql = require('mysql'), // node-mysql module
-    myConnection = require('express-myconnection'), // express-myconnection module
-    dbOptions = {
-        host: 'localhost',
-        user: 'calendarAppUser',
-        password: 'password',
-        database: 'calendarApp'
-    };
 
-app.use(myConnection(mysql, dbOptions, 'single');
+app.use(
+
+    connection(mysql,{
+        host:'localhost',
+        user:'calendarAppUser',
+        password:'password',
+        port:3306,
+        database:'calendarApp'
+    },'request')
+);
+
+
 
 
 

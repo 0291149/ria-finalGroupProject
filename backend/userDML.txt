@@ -1,0 +1,22 @@
+INSERT INTO User (name, email, password)
+VALUES ('rob','rob@gmail.com','password');
+INSERT INTO User (name, email, password)
+VALUES ('pop','pop@gmail.com','password');
+INSERT INTO User (name, email, password)
+VALUES ('matt','matt@gmail.com','password');
+INSERT INTO User (name, email, password)
+VALUES ('pat','pat@gmail.com','password');
+INSERT INTO User (name, email, password)
+VALUES ('sarah','sarah@gmail.com','password');
+INSERT INTO User (name, email, password)
+VALUES ('mary','mary@gmail.com','password');
+INSERT INTO User (name, email, password)
+VALUES ('chris','chris@gmail.com','password');
+INSERT INTO User (name, email, password)
+VALUES ('ally','ally@gmail.com','password');
+INSERT INTO User (name, email, password)
+VALUES ('quin','quin@gmail.com','password');
+INSERT INTO User (name, email, password)
+VALUES ('luke','luke@gmail.com','password');
+INSERT INTO User (name, email, password)
+VALUES ('emily','emily@gmail.com','password');

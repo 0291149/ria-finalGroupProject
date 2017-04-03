@@ -1,0 +1,8 @@
+INSERT INTO User (title, startDate, endDate, isAllDay, description, location, userId)
+VALUES ('Boxing Day','2016-12-26 12:00:00','2016-12-26 12:00:00','y', 'buying things at the mall', 'Halifax Shopping Centre', 1 );
+
+INSERT INTO User (title, startDate, endDate, isAllDay, description, location, userId)
+VALUES ('New Years Eve','2016-12-31 12:00:00','2017-01-01 2:00:00','n', 'Celebrating the new year with friends', 'Mom's house', 3 );
+
+
+
