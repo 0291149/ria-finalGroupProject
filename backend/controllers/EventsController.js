@@ -45,14 +45,11 @@ module.exports.store = function(req,res,next){
 
         if(err) return next(err);
 
-        var query = connection.
-        query('INSERT INTO Event (title, startDate, endDate, isAllDay, description, location, userId) VALUES (?,?,?,?,?,?,?);',
-            [input.title, input.startDate, input.endDate, input.isAllDay, input.description, input.location, input.userId],
-        function(err, results){
+        var query = connection.query('INSERT INTO Event (title, startDate, endDate, isAllDay, description, location, userId) VALUES (?,?,?,?,?,?,?);',[input.title, input.startDate, input.endDate, input.isAllDay, input.description, input.location, input.userId], function(err, results){
 
             if(err) return next(err);
 
-            res.json({message: 'Employee Created'});
+            res.json({message: 'Event Created'});
 
         });
 
@@ -63,16 +60,48 @@ module.exports.store = function(req,res,next){
 };
 
 module.exports.update = function(req,res,next){
+
     var eventID = req.params.eventID;
     var input = req.body;
 
-    //req.getConnection(function)
+    req.getConnection(function(err, connection){
+
+        if(err) return next(err);
+
+        //var query = connection.query('UPDATE employees SET birth_date=?, first_name=?, last_name=?, gender=?, hire_date=? WHERE emp_no = ?;', [input.birth_date, input.first_name, input.last_name, input.gender, input.hire_date, emp_no], function(err, results){
+        var query = connection.query('UPDATE Event SET title=?, startDate=?, endDate=?, isAllDay=?, description=?, location=?, userId=? WHERE eventId = ?;', [input.title, input.startDate, input.endDate, input.isAllDay, input.description, input.location, input.userId, eventID], function(err, results){
+        //var query = connection.query('UPDATE Event SET title=?, startDate=?, endDate=?, isAllDay=?, description=?, location=?, userId=? WHERE eventId = ?;', [input.birth_date, input.first_name, input.last_name, input.gender, input.hire_date, emp_no], function(err, results){
+
+                if(err) return next(err);
+
+                res.json({message: 'Event Updated'});
+
+            });
+
+        console.log(query.sql);
+
+    });
 
     console.log(input);
 };
 
 module.exports.destroy = function(req, res, next){
+
     var eventID = req.params.eventID;
 
-    console.log(eventID);
+    req.getConnection(function(err,connection){
+
+        if(err) return next(err);
+
+        var query = connection.query('DELETE FROM Event WHERE eventId = ?;', [eventID], function(err, results){
+
+            if(err) return next(err);
+
+            res.json({message: 'Event Deleted'});
+
+        });
+
+        console.log(query.sql);
+
+    });
 };
