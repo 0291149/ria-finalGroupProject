@@ -1,7 +1,6 @@
 {
   "name": "eventcalendar",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "dependencies": {
     "bootstrap": "^3.3.7",
@@ -11,7 +10,8 @@
   },
   "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
@@ -22,5 +22,6 @@
   "bugs": {
     "url": "https://github.com/0291149/ria-finalGroupProject/issues"
   },
-  "homepage": "https://github.com/0291149/ria-finalGroupProject#readme"
+  "homepage": "https://github.com/0291149/ria-finalGroupProject#readme",
+  "description": ""
 }
