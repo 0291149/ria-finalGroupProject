@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6844fc02-c3a4-4567-a123-91a7da07a847" name="Default" comment="CRUD on events is working.">
+    <list default="true" id="6844fc02-c3a4-4567-a123-91a7da07a847" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../frontend/.gitignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../frontend/bower.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../frontend/index.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../frontend/script.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controllers/UsersController.js" afterPath="$PROJECT_DIR$/controllers/UsersController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/users.js" afterPath="$PROJECT_DIR$/routes/users.js" />
     </list>
     <ignored path="backend.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -201,7 +202,7 @@
       <updated>1491237970781</updated>
       <workItem from="1491237971929" duration="34000" />
       <workItem from="1491238162638" duration="2832000" />
-      <workItem from="1491255575734" duration="3932000" />
+      <workItem from="1491255575734" duration="4616000" />
     </task>
     <task id="LOCAL-00001" summary="removed some empty lines and added .gitignore">
       <created>1491238222268</created>
@@ -224,15 +225,22 @@
       <option name="project" value="LOCAL" />
       <updated>1491258463265</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="CRUD on users is working. Please note that password needs to be changed to 255 instead of being at 40.">
+      <created>1491259539409</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1491259539409</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="6923000" />
+    <option name="totallyTimeSpent" value="7607000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1" y="28" width="1922" height="1019" extended-state="6" />
-    <editor active="false" />
+    <frame x="-1" y="28" width="1922" height="1019" extended-state="7" />
+    <editor active="true" />
     <layout>
       <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20641711" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -269,7 +277,8 @@
     <MESSAGE value="removed some empty lines and added .gitignore" />
     <MESSAGE value="Needing to finish the functions of update and delete. Still needs testing." />
     <MESSAGE value="CRUD on events is working." />
-    <option name="LAST_COMMIT_MESSAGE" value="CRUD on events is working." />
+    <MESSAGE value="CRUD on users is working. Please note that password needs to be changed to 255 instead of being at 40." />
+    <option name="LAST_COMMIT_MESSAGE" value="CRUD on users is working. Please note that password needs to be changed to 255 instead of being at 40." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -330,7 +339,7 @@
         <state relative-caret-position="360">
           <caret line="24" column="27" selection-start-line="24" selection-start-column="27" selection-end-line="24" selection-end-column="27" />
           <folding>
-            <element signature="n#!!doc" expanded="true" />
+            <element signature="n#!!doc" expanded="false" />
           </folding>
         </state>
       </provider>

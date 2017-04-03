@@ -1,0 +1,22 @@
+{
+  "name": "frontend",
+  "homepage": "https://github.com/0291149/ria-finalGroupProject",
+  "authors": [
+    "0291149 <halmnop@gmail.com>"
+  ],
+  "description": "Our frontend for our rich internet application course's final project.",
+  "main": "index.html",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.2.1",
+    "bootstrap": "^3.3.7",
+    "jquery-ui": "^1.12.1"
+  }
+}

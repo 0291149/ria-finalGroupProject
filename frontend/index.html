@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Event Calendar</title>
+
+    <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <!-- https://www.w3schools.com/w3css/ -->
+    <link href="https://www.w3schools.com/w3css/4/w3.css" rel="stylesheet" type="text/css" />
+    <link href="bower_components/jquery-ui/themes/base/dialog.css" rel="stylesheet" type="text/css" />
+    <link href="bower_components/jquery-ui/themes/black-tie/jquery-ui.css" rel="stylesheet" type="text/css" />
+    <link href="styles.css" rel="stylesheet" type="text/css" />
+
+    <script src="bower_components/jquery/dist/jquery.min.js" type="text/javascript"></script>
+    <script src="bower_components/jquery-ui/jquery-ui.min.js" type="text/javascript"></script>
+    <script src="script.js" type="text/javascript"></script>
+
+</head>
+<body>
+
+    <div id="banner">
+        <h3>Event Planner</h3>
+        <div id="user">Logged in as <span id="loggedInAs"></span>!<button id="logout">Logout</button></div>
+    </div>
+
+    <div id="greetings">
+        <h1>Events</h1>
+        <p>A miniature description about how fabulous our event app thing is.</p>
+        <button id="createNew">Create New Event</button>
+    </div>
+
+    <div id="formDialog">
+
+    </div>
+
+    <div id="confirmDeleteDialog">
+
+    </div>
+
+    <div id="eventsTable">
+        <table>
+            <thead id="eventsList">
+            </thead>
+        </table>
+    </div>
+
+
+
+</body>
+</html>
