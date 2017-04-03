@@ -23,6 +23,21 @@ app.use(function(req, res, next){
 });
 
 //define our mysql connection
+var mysql = require('mysql'), // node-mysql module
+    myConnection = require('express-myconnection'), // express-myconnection module
+    dbOptions = {
+        host: 'localhost',
+        user: 'calendarAppUser',
+        password: 'password',
+        database: 'calendarApp'
+    };
+
+app.use(myConnection(mysql, dbOptions, 'single');
+
+
+
+
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
