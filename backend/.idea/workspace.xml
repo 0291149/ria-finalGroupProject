@@ -3,7 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="6844fc02-c3a4-4567-a123-91a7da07a847" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controllers/EventsController.js" afterPath="$PROJECT_DIR$/controllers/EventsController.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../frontend/index.html" afterPath="$PROJECT_DIR$/../frontend/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../frontend/script.js" afterPath="$PROJECT_DIR$/../frontend/script.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../frontend/styles.css" afterPath="$PROJECT_DIR$/../frontend/styles.css" />
     </list>
     <ignored path="backend.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -30,8 +32,8 @@
       <file leaf-file-name="EventsController.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/controllers/EventsController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="373">
-              <caret line="25" column="75" selection-start-line="25" selection-start-column="75" selection-end-line="25" selection-end-column="75" />
+            <state relative-caret-position="298">
+              <caret line="20" column="29" selection-start-line="20" selection-start-column="29" selection-end-line="20" selection-end-column="29" />
               <folding />
             </state>
           </provider>
@@ -225,7 +227,7 @@
       <workItem from="1491238162638" duration="2832000" />
       <workItem from="1491255575734" duration="4616000" />
       <workItem from="1491262307399" duration="1499000" />
-      <workItem from="1491303198444" duration="264000" />
+      <workItem from="1491303198444" duration="1671000" />
     </task>
     <task id="LOCAL-00001" summary="removed some empty lines and added .gitignore">
       <created>1491238222268</created>
@@ -255,14 +257,21 @@
       <option name="project" value="LOCAL" />
       <updated>1491259539409</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Added ORDER BY to index method on events.">
+      <created>1491303480364</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1491303480364</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="9370000" />
+    <option name="totallyTimeSpent" value="10777000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="28" width="1440" height="838" extended-state="0" />
+    <frame x="0" y="28" width="1440" height="838" extended-state="1" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20605187" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -301,7 +310,8 @@
     <MESSAGE value="Needing to finish the functions of update and delete. Still needs testing." />
     <MESSAGE value="CRUD on events is working." />
     <MESSAGE value="CRUD on users is working. Please note that password needs to be changed to 255 instead of being at 40." />
-    <option name="LAST_COMMIT_MESSAGE" value="CRUD on users is working. Please note that password needs to be changed to 255 instead of being at 40." />
+    <MESSAGE value="Added ORDER BY to index method on events." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added ORDER BY to index method on events." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -368,8 +378,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/controllers/EventsController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="373">
-          <caret line="25" column="75" selection-start-line="25" selection-start-column="75" selection-end-line="25" selection-end-column="75" />
+        <state relative-caret-position="298">
+          <caret line="20" column="29" selection-start-line="20" selection-start-column="29" selection-end-line="20" selection-end-column="29" />
           <folding />
         </state>
       </provider>

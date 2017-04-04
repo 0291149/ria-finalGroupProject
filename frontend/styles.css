@@ -25,3 +25,16 @@ tbody tr:nth-child(2n)
 {
     background-color: #c8e6cb;
 }
+
+.banner h3 {
+    display: inline-block;
+}
+
+.user {
+    float:right;
+    display: inline-block;
+}
+
+.hideMe {
+    display: none;
+}

@@ -134,6 +134,10 @@ $(document).ready(function(){
 
     //set up the dialogs and event listeners
 
+    //tabs
+    //http://jqueryui.com/tabs/
+    $("#tabs").tabs();
+
     //dialogs
     $("#formDialog").dialog({
         autoOpen: false
@@ -147,6 +151,9 @@ $(document).ready(function(){
     $("#logout").click(function(){
         alert("I logged out.");
     });
+    /*$("#login").click(function(){
+        alert("I logged in.");
+    });*/
 
     //auto run read events
     readEvents();
