@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="944d03da-bc7b-4ce0-97cf-a55e43e9a3f8" name="Default" comment="" />
+    <list default="true" id="944d03da-bc7b-4ce0-97cf-a55e43e9a3f8" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+    </list>
     <ignored path="backend.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -246,7 +248,7 @@
       <updated>1491223722067</updated>
       <workItem from="1491223723281" duration="765000" />
       <workItem from="1491321385505" duration="1271000" />
-      <workItem from="1491326057850" duration="200000" />
+      <workItem from="1491326057850" duration="289000" />
     </task>
     <task id="LOCAL-00001" summary="working on create ajax call and allDay checked function">
       <created>1491326086361</created>
@@ -259,7 +261,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2236000" />
+    <option name="totallyTimeSpent" value="2325000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="28" width="1282" height="963" extended-state="6" />
