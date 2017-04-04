@@ -26,6 +26,17 @@ function DateConverter(data)
 
 }
 
+function checkLength( o, n, min, max ) {
+    if ( o.val().length > max || o.val().length < min ) {
+        o.addClass( "ui-state-error" );
+        updateTips( "Length of " + n + " must be between " +
+            min + " and " + max + "." );
+        return false;
+    } else {
+        return true;
+    }
+}
+
 /*CRUD functions*/
 
 function addEvent()
@@ -56,26 +67,38 @@ function createEvent()
     else{
         allDay = 'n';
     }
+
+    var valid = true;
+    valid = valid && checkLength( $('#eventName'), "Event Title", 1, 100 );
+    //valid = valid && checkLength( $('#startDate'), "Start Date", 1, 100 );
+    //valid = valid && checkLength( $('#startTime'), "Start Time", 1, 100 );
+    //valid = valid && checkLength( $('#endDate'), "End Date", 1, 100 );
+    //valid = valid && checkLength( $('#endTime'), "End Time", 1, 100 );
+    valid = valid && checkLength( $('#eventDescription'), "Event Description", 1, 255 );
+    valid = valid && checkLength( $('#eventLocation'), "Event Location", 1, 255 );
     //ajax call to create
-    $.ajax({
-        url: "http://localhost:3000/events",
-        method: "POST",
-        data: {
-            title: $('#eventName').val(),
-            startDate: $('#startDate').val(),
-            //startTime: $('#startTime').val(),
-            endDate: $('#endDate').val(),
-            //endTime: $('#endTime').val(),
-            isAllDay: allDay,
-            description: $('#eventDescription').val(),
-            location: $('#eventLocation').val(),
-            userId: 1 //hardcoded userId for now until we get authentication working
-        },
-        success: function(data){
-            //$("#formDialog").dialog( "close" );
-            readEvents();
-        }
-    });
+    if ( valid ) {
+        $.ajax({
+            url: "http://localhost:3000/events",
+            method: "POST",
+            data: {
+                title: $('#eventName').val(),
+                startDate: $('#startDate').val(),
+                //startTime: $('#startTime').val(),
+                endDate: $('#endDate').val(),
+                //endTime: $('#endTime').val(),
+                isAllDay: allDay,
+                description: $('#eventDescription').val(),
+                location: $('#eventLocation').val(),
+                userId: 1 //hardcoded userId for now until we get authentication working
+            },
+            success: function (data) {
+                //$("#formDialog").dialog( "close" );
+                readEvents();
+            }
+        });
+        $("#formDialog").dialog( "close" );
+    }
 }
 
 function readEvents()
@@ -202,24 +225,7 @@ function allDay() {
 
     //when all day is checked change the start date and end date of event
 
-    var dateObj = new Date();
-    var month = ("0" + (dateObj.getMonth() + 1)).slice(-2);
-    var day = ("0" + (dateObj.getDate())).slice(-2);
-    var year = dateObj.getUTCFullYear();
-
-    newdate = year + "-" + month + "-" + day;
-
-    $('#endDate').val(newdate);
-    alert($('#endTime').val());
-    // var meridiem = 'AM';
-    // var d = new Date(),
-    //     h = d.getHours(),
-    //     m = d.getMinutes();
-    // if(h < 10) h = '0' + h;
-    // else meridiem = 'PM';
-    // if(m < 10) m = '0' + m;
-    // var time = h + ':' + m + " " + meridiem;
-    //$('#endTime').val(time);
+    $('#endDate').val($('#startDate').val());
     $('#endTime').val("23:59");
 
 }
