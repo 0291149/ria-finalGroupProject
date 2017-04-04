@@ -105,7 +105,7 @@ function readEvents()
 
                         //actions
                         htmlString +="<td><p><span class='glyphicon glyphicon-floppy-disk'></span></p>";
-                        htmlString += "<p><span class='glyphicon glyphicon-trash'></span></p></td></tr>";
+                        htmlString += "<p><span onclick='deleteEvent(data[i].eventID)' class='glyphicon glyphicon-trash'></span></p></td></tr>";
 
 
                     }
@@ -139,9 +139,12 @@ function confirmDeletionOfEvent()
     //comfirm that the user wishes to delete event
 }
 
-function deleteEvent()
+function deleteEvent(id)
 {
     //ajax call to delete event
+    //create a jquery ui
+    $("#confirmDeleteDialog").click
+
 }
 
 function allDay() {
