@@ -33,7 +33,7 @@ function addEvent()
     $('#formDialog').dialog('option', 'title', 'Create new Event');
     $("#formDialog").dialog({
         buttons: {
-            "Create new Event": createEvent,
+            "Create new Event": addEvent,
             Cancel: function() {
                 $("#formDialog").dialog( "close" );
             }
@@ -49,33 +49,7 @@ function addEvent()
 
 function createEvent()
 {
-    var allDay;
-    if ($('#allDay').val() == 'on'){
-        allDay = 'y';
-    }
-    else{
-        allDay = 'n';
-    }
     //ajax call to create
-    $.ajax({
-        url: "http://localhost:3000/events",
-        method: "POST",
-        data: {
-            title: $('#eventName').val(),
-            startDate: $('#startDate').val(),
-            //startTime: $('#startTime').val(),
-            endDate: $('#endDate').val(),
-            //endTime: $('#endTime').val(),
-            isAllDay: allDay,
-            description: $('#eventDescription').val(),
-            location: $('#eventLocation').val(),
-            userId: 1 //hardcoded userId for now until we get authentication working
-        },
-        success: function(data){
-            //$("#formDialog").dialog( "close" );
-            readEvents();
-        }
-    });
 }
 
 function readEvents()
@@ -130,8 +104,8 @@ function readEvents()
                         htmlString += "</p></td>";
 
                         //actions
-                        htmlString +="<td><p><span class='glyphicon glyphicon-floppy-disk'></span></p>";
-                        htmlString += "<p><span onclick='deleteEvent(" + data[i].eventId +");' class='glyphicon glyphicon-trash'></span></p></td></tr>";
+                        htmlString +="<td><p><span  id='' class='glyphicon glyphicon-floppy-disk'></span></p>";
+                        htmlString += "<p><span class='glyphicon glyphicon-trash'></span></p></td></tr>";
 
 
                     }
@@ -153,11 +127,27 @@ function readEvents()
 function editEvent()
 {
     //populates form for editing event
+    $('#formDialog').dialog('option', 'title', 'Edit Event');
+    $("#formDialog").dialog({
+        buttons: {
+            "Edit Event": addEvent,
+            Cancel: function() {
+                $("#formDialog").dialog( "close" );
+            }
+        },
+        close: function() {
+            form[ 0 ].reset();
+            allFields.removeClass( "ui-state-error" );
+        }
+    });
+    $("#formDialog").dialog( "open" );
+
 }
 
 function updateEvent()
 {
     //ajax call to update event
+
 }
 
 function confirmDeletionOfEvent()
@@ -165,37 +155,9 @@ function confirmDeletionOfEvent()
     //comfirm that the user wishes to delete event
 }
 
-function deleteEvent(id)
+function deleteEvent()
 {
-    $("#confirmDeleteDialog").dialog('open');
     //ajax call to delete event
-    //create a jquery ui
-    $(function(){
-        $("#confirmDeleteDialog").dialog({
-            resizable:false,
-            height: "auto",
-            width: 400,
-            modal:true,
-            buttons:{
-                "Delete Event": function(){
-                    $.ajax({
-                        url:"http://localhost:3000/events/" + id,
-                        type:"Delete",
-                        success: function(result){
-                            readEvents();
-                        }
-                    });
-                    $(this).dialog('close');
-
-                },
-                Cancel: function(){
-                    $(this).dialog('close');
-                }
-            }
-        });
-    });
-
-
 }
 
 function allDay() {
@@ -207,21 +169,12 @@ function allDay() {
     var day = ("0" + (dateObj.getDate())).slice(-2);
     var year = dateObj.getUTCFullYear();
 
+    var time = new Date().getTime();
+    alert(time);
     newdate = year + "-" + month + "-" + day;
+    alert(newdate);
 
     $('#endDate').val(newdate);
-    alert($('#endTime').val());
-    // var meridiem = 'AM';
-    // var d = new Date(),
-    //     h = d.getHours(),
-    //     m = d.getMinutes();
-    // if(h < 10) h = '0' + h;
-    // else meridiem = 'PM';
-    // if(m < 10) m = '0' + m;
-    // var time = h + ':' + m + " " + meridiem;
-    //$('#endTime').val(time);
-    $('#endTime').val("23:59");
-
 }
 $(document).ready(function(){
 
@@ -251,6 +204,8 @@ $(document).ready(function(){
     $( "#createNew" ).click(function() {
         addEvent();
     });
+
+
 
     $("#allDay").click(function(){
        allDay();
