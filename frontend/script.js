@@ -195,6 +195,8 @@ function confirmDeletionOfEvent()
 
 function deleteEvent(id)
 {
+    $('#confirmDeleteDialog').dialog('option', 'title', 'Delete Event?');
+
     $("#confirmDeleteDialog").dialog('open');
     //ajax call to delete event
     //create a jquery ui
