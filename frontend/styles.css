@@ -1,0 +1,27 @@
+.rightWing {
+    /*float: right;*/
+    text-align: right;
+}
+
+/*
+.leftWing {
+    float: left;
+}
+*/
+
+/*.rowOne {
+    border-top: 1px solid #000000;
+}*/
+
+.rowTwo {
+    border-bottom: 1px solid #000000;
+}
+tbody tr:nth-child(2n-1)
+{
+    background-color: #dcf5f2;
+}
+
+tbody tr:nth-child(2n)
+{
+    background-color: #c8e6cb;
+}
