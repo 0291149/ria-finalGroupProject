@@ -105,7 +105,7 @@ function readEvents()
 
                         //actions
                         htmlString +="<td><p><span class='glyphicon glyphicon-floppy-disk'></span></p>";
-                        htmlString += "<p><span onclick='deleteEvent(data[i].eventID)' class='glyphicon glyphicon-trash'></span></p></td></tr>";
+                        htmlString += "<p><span onclick='deleteEvent(" + data[i].eventId +");' class='glyphicon glyphicon-trash'></span></p></td></tr>";
 
 
                     }
@@ -141,9 +141,34 @@ function confirmDeletionOfEvent()
 
 function deleteEvent(id)
 {
+    $("#confirmDeleteDialog").dialog('open');
     //ajax call to delete event
     //create a jquery ui
-    $("#confirmDeleteDialog").click
+    $(function(){
+        $("#confirmDeleteDialog").dialog({
+            resizable:false,
+            height: "auto",
+            width: 400,
+            modal:true,
+            buttons:{
+                "Delete Event": function(){
+                    $.ajax({
+                        url:"http://localhost:3000/events/" + id,
+                        type:"Delete",
+                        success: function(result){
+                            readEvents();
+                        }
+                    });
+                    $(this).dialog('close');
+
+                },
+                Cancel: function(){
+                    $(this).dialog('close');
+                }
+            }
+        });
+    });
+
 
 }
 
