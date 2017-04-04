@@ -6,7 +6,7 @@ module.exports.index = function(req,res,next){
     req.getConnection(function(err,connection){
         if(err) return next(err);
 
-        var query = connection.query('SELECT * FROM Event;', [], function(err, results){
+        var query = connection.query('SELECT * FROM Event ORDER BY startDate ASC;', [], function(err, results){
             if (err) return next(err);
 
             res.json(results);
