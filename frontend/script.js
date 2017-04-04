@@ -30,6 +30,20 @@ function DateConverter(data)
 
 function addEvent()
 {
+    $('#formDialog').dialog('option', 'title', 'Create new Event');
+    $("#formDialog").dialog({
+        buttons: {
+            "Create new Event": addEvent,
+            Cancel: function() {
+                $("#formDialog").dialog( "close" );
+            }
+        },
+        close: function() {
+            form[ 0 ].reset();
+            allFields.removeClass( "ui-state-error" );
+        }
+    });
+    $("#formDialog").dialog( "open" );
     //populates form for adding event
 }
 
@@ -130,6 +144,22 @@ function deleteEvent()
     //ajax call to delete event
 }
 
+function allDay() {
+
+    //when all day is checked change the start date and end date of event
+
+    var dateObj = new Date();
+    var month = ("0" + (dateObj.getMonth() + 1)).slice(-2);
+    var day = ("0" + (dateObj.getDate())).slice(-2);
+    var year = dateObj.getUTCFullYear();
+
+    var time = new Date().getTime();
+    alert(time);
+    newdate = year + "-" + month + "-" + day;
+    alert(newdate);
+
+    $('#endDate').val(newdate);
+}
 $(document).ready(function(){
 
     //set up the dialogs and event listeners
@@ -140,7 +170,8 @@ $(document).ready(function(){
 
     //dialogs
     $("#formDialog").dialog({
-        autoOpen: false
+        autoOpen: false,
+        modal: true
     });
 
     $("#confirmDeleteDialog").dialog({
@@ -154,6 +185,13 @@ $(document).ready(function(){
     /*$("#login").click(function(){
         alert("I logged in.");
     });*/
+    $( "#createNew" ).click(function() {
+        addEvent();
+    });
+
+    $("#allDay").click(function(){
+       allDay();
+    });
 
     //auto run read events
     readEvents();
