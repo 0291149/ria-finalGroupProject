@@ -33,7 +33,7 @@ function addEvent()
     $('#formDialog').dialog('option', 'title', 'Create new Event');
     $("#formDialog").dialog({
         buttons: {
-            "Create new Event": addEvent,
+            "Create new Event": createEvent,
             Cancel: function() {
                 $("#formDialog").dialog( "close" );
             }
@@ -49,7 +49,33 @@ function addEvent()
 
 function createEvent()
 {
+    var allDay;
+    if ($('#allDay').val() == 'on'){
+        allDay = 'y';
+    }
+    else{
+        allDay = 'n';
+    }
     //ajax call to create
+    $.ajax({
+        url: "http://localhost:3000/events",
+        method: "POST",
+        data: {
+            title: $('#eventName').val(),
+            startDate: $('#startDate').val(),
+            //startTime: $('#startTime').val(),
+            endDate: $('#endDate').val(),
+            //endTime: $('#endTime').val(),
+            isAllDay: allDay,
+            description: $('#eventDescription').val(),
+            location: $('#eventLocation').val(),
+            userId: 1 //hardcoded userId for now until we get authentication working
+        },
+        success: function(data){
+            //$("#formDialog").dialog( "close" );
+            readEvents();
+        }
+    });
 }
 
 function readEvents()
@@ -153,12 +179,21 @@ function allDay() {
     var day = ("0" + (dateObj.getDate())).slice(-2);
     var year = dateObj.getUTCFullYear();
 
-    var time = new Date().getTime();
-    alert(time);
     newdate = year + "-" + month + "-" + day;
-    alert(newdate);
 
     $('#endDate').val(newdate);
+    alert($('#endTime').val());
+    // var meridiem = 'AM';
+    // var d = new Date(),
+    //     h = d.getHours(),
+    //     m = d.getMinutes();
+    // if(h < 10) h = '0' + h;
+    // else meridiem = 'PM';
+    // if(m < 10) m = '0' + m;
+    // var time = h + ':' + m + " " + meridiem;
+    //$('#endTime').val(time);
+    $('#endTime').val("23:59");
+
 }
 $(document).ready(function(){
 
