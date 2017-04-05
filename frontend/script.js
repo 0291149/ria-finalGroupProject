@@ -26,6 +26,20 @@ function DateConverter(data)
 
 }
 
+function DateSplitter(date)
+{
+    var d = new Date(date),
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear();
+
+    if (month.length < 2) month = '0' + month;
+    if (day.length < 2) day = '0' + day;
+
+    return [year, month, day].join('-');
+}
+
+
 function displayDate(data, className)
 {
     /*<tr class="rowOne">
@@ -271,8 +285,12 @@ function editEvent(id)
 
         success: function (data) {
             var newTitle = data.title;
-            var newStartDate = data.startDate;
-            var newEndDate = data.endDate;
+            var newStartDate = DateSplitter(data.startDate);
+
+            var newEndDate = DateSplitter(data.endDate);
+
+
+
             var newAllDay = data.allDay;
             var newDescription = data.description;
             var newLocation = data.location;
