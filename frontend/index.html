@@ -28,7 +28,7 @@
             <!--<div class="user"><button>Login</button></div>-->
         </div>
 
-        <div>
+        <div id="toLogIn">
             <div id="tabs">
                 <ul>
                     <li><a href="#login">Login</a></li>
@@ -78,43 +78,43 @@
         </div>
 
         <div id="formDialog">
-                <form>
-                    <div>
-                        <label for="eventName">Event Name</label>
-                        <input type="text" name="eventName" id="eventName" class="text ui-widget-content ui-corner-all">
-                    </div>
-                    <div>
-                        <label for="startDate">Start Date</label>
-                        <input type="date" name="startDate" id="startDate" class="text ui-widget-content ui-corner-all">
-                    </div>
-                    <div>
-                        <label for="startTime">Start Time</label>
-                        <input type="time" name="startTime" id="startTime" class="text ui-widget-content ui-corner-all">
-                    </div>
-                    <div>
-                        <label for="endDate">End Date</label>
-                        <input type="date" name="endDate" id="endDate" class="text ui-widget-content ui-corner-all">
-                    </div>
-                    <div>
-                        <label for="endTime">End Time</label>
-                        <input type="time" name="endTime" id="endTime" class="text ui-widget-content ui-corner-all">
-                    </div>
-                    <div>
-                        <label for="allDay">All Day</label>
-                        <input type="checkbox" name="allDay" id="allDay" class="text ui-widget-content ui-corner-all">
-                    </div>
-                    <div>
-                        <label for="eventDescription">Event Description</label>
-                        <textarea name="eventDescription" id="eventDescription" class="text ui-widget-content ui-corner-all"></textarea>
-                    </div>
-                    <div>
-                        <label for="eventLocation">Event Location</label>
-                        <input type="text" name="eventLocation" id="eventLocation" class="text ui-widget-content ui-corner-all">
-                    </div>
-                    <!-- Allow form submission with keyboard without duplicating the dialog button -->
-                        <input type="submit" tabindex="-1" style="position:absolute; top:-1000px">
-                </form>
-            </div>
+            <form>
+                <div>
+                    <label for="eventName">Event Name</label>
+                    <input type="text" name="eventName" id="eventName" class="text ui-widget-content ui-corner-all">
+                </div>
+                <div>
+                    <label for="startDate">Start Date</label>
+                    <input type="date" name="startDate" id="startDate" class="text ui-widget-content ui-corner-all">
+                </div>
+                <div>
+                    <label for="startTime">Start Time</label>
+                    <input type="time" name="startTime" id="startTime" class="text ui-widget-content ui-corner-all">
+                </div>
+                <div>
+                    <label for="endDate">End Date</label>
+                    <input type="date" name="endDate" id="endDate" class="text ui-widget-content ui-corner-all">
+                </div>
+                <div>
+                    <label for="endTime">End Time</label>
+                    <input type="time" name="endTime" id="endTime" class="text ui-widget-content ui-corner-all">
+                </div>
+                <div>
+                    <label for="allDay">All Day</label>
+                    <input type="checkbox" name="allDay" id="allDay" class="text ui-widget-content ui-corner-all">
+                </div>
+                <div>
+                    <label for="eventDescription">Event Description</label>
+                    <textarea name="eventDescription" id="eventDescription" class="text ui-widget-content ui-corner-all"></textarea>
+                </div>
+                <div>
+                    <label for="eventLocation">Event Location</label>
+                    <input type="text" name="eventLocation" id="eventLocation" class="text ui-widget-content ui-corner-all">
+                </div>
+                <!-- Allow form submission with keyboard without duplicating the dialog button -->
+                    <input type="submit" tabindex="-1" style="position:absolute; top:-1000px">
+            </form>
+
         </div>
 
         <div id="confirmDeleteDialog">

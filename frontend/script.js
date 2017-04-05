@@ -11,9 +11,9 @@ function DateConverter(data)
     var stringDate = date.toDateString();
 
     var minutes = "";
-    if(date.getMinutes() == 0)
+    if(date.getMinutes() < 10)
     {
-        minutes =  "00";
+        minutes =  "0" + date.getMinutes();
     }
     else
     {
@@ -286,7 +286,7 @@ function allDay() {
     newdate = year + "-" + month + "-" + day;
 
     $('#endDate').val(newdate);
-    alert($('#endTime').val());
+    //alert($('#endTime').val());
     // var meridiem = 'AM';
     // var d = new Date(),
     //     h = d.getHours(),
@@ -299,6 +299,7 @@ function allDay() {
     $('#endTime').val("23:59");
 
 }
+
 $(document).ready(function(){
 
     //set up the dialogs and event listeners
