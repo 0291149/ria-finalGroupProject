@@ -30,6 +30,11 @@ function DateConverter(data)
 
 function addEvent()
 {
+
+    var form = $('#formDialog').find("form");
+
+    var allFields = $( [] ).add($('#eventName')).add($('#eventDescription')).add($('#eventLocation'));
+
     $('#formDialog').dialog('option', 'title', 'Create new Event');
     $("#formDialog").dialog({
         buttons: {
@@ -282,20 +287,9 @@ function allDay() {
     var month = ("0" + (dateObj.getMonth() + 1)).slice(-2);
     var day = ("0" + (dateObj.getDate())).slice(-2);
     var year = dateObj.getUTCFullYear();
+    //newdate = year + "-" + month + "-" + day;
 
-    newdate = year + "-" + month + "-" + day;
-
-    $('#endDate').val(newdate);
-    //alert($('#endTime').val());
-    // var meridiem = 'AM';
-    // var d = new Date(),
-    //     h = d.getHours(),
-    //     m = d.getMinutes();
-    // if(h < 10) h = '0' + h;
-    // else meridiem = 'PM';
-    // if(m < 10) m = '0' + m;
-    // var time = h + ':' + m + " " + meridiem;
-    //$('#endTime').val(time);
+    $('#endDate').val($('#startDate').val());
     $('#endTime').val("23:59");
 
 }
