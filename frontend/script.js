@@ -225,7 +225,7 @@ function addEvent()
 function createEvent()
 {
     var allDay;
-    if ($('#allDay').val() == 'on'){
+    if (document.getElementById("allDay").checked){
         allDay = 'y';
     }
     else{
@@ -321,10 +321,10 @@ function editEvent(id)
             var newEndTime = timeSplitter(data.endDate);
 
 
-            var newAllDay = data.allDay;
+            var newAllDay = data.isAllDay;
             var newDescription = data.description;
             var newLocation = data.location;
-
+            console.log(newAllDay);
             $('#eventName').val(newTitle);
             $('#startDate').val(newStartDate);
             $('#startTime').val();
@@ -332,8 +332,15 @@ function editEvent(id)
             $('#startTime').val(newStartTime);
             $('#endTime').val(newEndTime);
 
-            //endTime: $('#endTime').val();
-            // $('#allDay').val(newAllDay);
+            if(newAllDay == "y"){
+                document.getElementById("allDay").checked = true;
+                //$('#allDay').attr("checked", "checked");
+            }
+            else{
+                document.getElementById("allDay").checked = false;
+                //$('#allDay').attr("checked", "unchecked");
+            }
+
             $('#eventDescription').val(newDescription);
             $('#eventLocation').val(newLocation);
             // userId: 1;
