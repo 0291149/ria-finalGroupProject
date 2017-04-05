@@ -39,6 +39,18 @@ function DateSplitter(date)
     return [year, month, day].join('-');
 }
 
+function timeSplitter(date)
+{
+    var time = new Date(date);
+    var hour = time.getHours();
+    var minute = time.getMinutes();
+    if(minute < 10) minute ='0' + minute;
+    if(hour < 10) hour ='0' + hour;
+
+    return [hour,minute].join(':');
+
+}
+
 
 function displayDate(data, className)
 {
@@ -258,9 +270,9 @@ function editEvent(id)
         success: function (data) {
             var newTitle = data.title;
             var newStartDate = DateSplitter(data.startDate);
-
             var newEndDate = DateSplitter(data.endDate);
-
+            var newStartTime = timeSplitter(data.startDate);
+            var newEndTime = timeSplitter(data.endDate);
 
 
             var newAllDay = data.allDay;
@@ -269,8 +281,11 @@ function editEvent(id)
 
             $('#eventName').val(newTitle);
             $('#startDate').val(newStartDate);
-            //$('#startTime').val();
+            $('#startTime').val();
             $('#endDate').val(newEndDate);
+            $('#startTime').val(newStartTime);
+            $('#endTime').val(newEndTime);
+
             //endTime: $('#endTime').val();
             // $('#allDay').val(newAllDay);
             $('#eventDescription').val(newDescription);

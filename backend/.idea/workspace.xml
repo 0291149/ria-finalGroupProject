@@ -2,16 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6844fc02-c3a4-4567-a123-91a7da07a847" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../controllers/AuthController.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../controllers/EventsController.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../controllers/UsersController.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../models/Event.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../models/User.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../package.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../server.js" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../frontend/bower.json" afterPath="$PROJECT_DIR$/../frontend/bower.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../frontend/index.html" afterPath="$PROJECT_DIR$/../frontend/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../frontend/script.js" afterPath="$PROJECT_DIR$/../frontend/script.js" />
     </list>
     <ignored path="backend.iws" />
