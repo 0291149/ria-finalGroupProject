@@ -26,6 +26,59 @@ function DateConverter(data)
 
 }
 
+function displayDate(data, className)
+{
+    /*<tr class="rowOne">
+     <td class="leftWing">Christmas Dinner</td>
+     <td class="rightWing">December 23, 2017 4:00PM</td>
+     <td><span class="glyphicon glyphicon-floppy-disk"></span></td>
+     </tr>
+     <tr class="rowTwo">
+     <td class="leftWing">Christmas with mom</td>
+     <td class="rightWing">Mom's place</td>
+     <td><span class="glyphicon glyphicon-trash"></span></td>
+     </tr>*/
+
+    /*
+     title           date        action
+     description     location    action
+     */
+
+    var startDate = DateConverter(data.startDate);
+    var endDate = DateConverter(data.endDate);
+
+    //start the row
+    var htmlString = "<tr class='"+ className +"'>";
+
+    //left wing
+    htmlString += "<td class='leftWing'><p>";
+    htmlString += data.title;
+    htmlString += "</p><p>";
+    htmlString += data.description;
+    htmlString += "</p></td>";
+
+    //right wing
+    htmlString += "<td class='rightWing'><p>";
+    htmlString += startDate + " - " + endDate;
+    htmlString += "</p><p>";
+    htmlString += data.location;
+    htmlString += "</p></td>";
+
+    //actions
+    htmlString +="<td><p><span onclick='editEvent(" + data.eventId +");' class='glyphicon glyphicon-pencil'></span></p>";
+    htmlString += "<p><span onclick='deleteEvent(" + data.eventId +");' class='glyphicon glyphicon-trash'></span></p></td>";
+
+    //end the row
+    htmlString += "</tr>";
+
+    return htmlString;
+}
+
+function displayError()
+{
+    $("#errors").html("There was an error processing your request. Please try again later.");
+}
+
 /*CRUD functions*/
 
 function addEvent()
@@ -101,42 +154,23 @@ function readEvents()
                     if(data[i].title != null && data[i].title.length > 0 && data[i].startDate != null && data[i].startDate.length > 0 && data[i].endDate != null && data[i].endDate.length > 0 && data[i].description != null && data[i].description.length > 0 && data[i].isAllDay != null && data[i].isAllDay.length > 0 && data[i].location != null && data[i].location.length > 0)
                     {
 
-                        var startDate = DateConverter(data[i].startDate);
-                        var endDate = DateConverter(data[i].endDate);
+                        date = new Date();
 
-                        /*<tr class="rowOne">
-                         <td class="leftWing">Christmas Dinner</td>
-                         <td class="rightWing">December 23, 2017 4:00PM</td>
-                         <td><span class="glyphicon glyphicon-floppy-disk"></span></td>
-                         </tr>
-                         <tr class="rowTwo">
-                         <td class="leftWing">Christmas with mom</td>
-                         <td class="rightWing">Mom's place</td>
-                         <td><span class="glyphicon glyphicon-trash"></span></td>
-                         </tr>*/
+                        //check if the start date has not passed
+                        if(new Date(data[i].startDate) > date)
+                        {
+                            //alert("This day has not passed");
 
-                        /*
-                        title           date        action
-                        description     location    action
-                         */
+                            htmlString += displayDate(data[i], "")
 
-                        //left wing
-                        htmlString += "<tr><td class='leftWing'><p>";
-                        htmlString += data[i].title;
-                        htmlString += "</p><p>";
-                        htmlString += data[i].description;
-                        htmlString += "</p></td>";
+                        }
+                        //check if the start time/date has passed, but the end date/time has not
+                        else if(new Date(data[i].startDate) < date && date <= new Date(data[i].endDate))
+                        {
 
-                        //right wing
-                        htmlString += "<td class='rightWing'><p>";
-                        htmlString += startDate + " - " + endDate;
-                        htmlString += "</p><p>";
-                        htmlString += data[i].location;
-                        htmlString += "</p></td>";
+                            htmlString += displayDate(data[i], 'currentEvent');
 
-                        //actions
-                        htmlString +="<td><p><span onclick='editEvent(" + data[i].eventId +");' class='glyphicon glyphicon-pencil'></span></p>";
-                        htmlString += "<p><span onclick='deleteEvent(" + data[i].eventId +");' class='glyphicon glyphicon-trash'></span></p></td></tr>";
+                        }
 
 
                     }
@@ -147,10 +181,13 @@ function readEvents()
 
             }
 
+            $("#errors").html("");
+
         },
         error: function(err)
         {
-            alert("Found an error");
+            //alert("Found an error");
+            displayError();
         }
     });
 }
@@ -239,11 +276,6 @@ function updateEvent(id)
             // }
         // });
     // });
-}
-
-function confirmDeletionOfEvent()
-{
-    //comfirm that the user wishes to delete event
 }
 
 function deleteEvent(id)

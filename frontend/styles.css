@@ -38,3 +38,7 @@ tbody tr:nth-child(2n)
 .hideMe {
     display: none;
 }
+
+.currentEvent {
+    background-color: #ce9797 !important;
+}
