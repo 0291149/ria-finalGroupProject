@@ -354,7 +354,7 @@
       <workItem from="1491255575734" duration="4616000" />
       <workItem from="1491262307399" duration="1499000" />
       <workItem from="1491303198444" duration="1673000" />
-      <workItem from="1491391983942" duration="2176000" />
+      <workItem from="1491391983942" duration="2734000" />
     </task>
     <task id="LOCAL-00001" summary="removed some empty lines and added .gitignore">
       <created>1491238222268</created>
@@ -395,7 +395,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="12955000" />
+    <option name="totallyTimeSpent" value="13513000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="28" width="1922" height="1019" extended-state="6" />

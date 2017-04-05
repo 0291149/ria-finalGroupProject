@@ -42,3 +42,7 @@ tbody tr:nth-child(2n)
 .currentEvent {
     background-color: #ce9797 !important;
 }
+
+.errorMe {
+    color: #901414;
+}
