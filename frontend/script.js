@@ -169,7 +169,9 @@ function addEvent()
 
     var form = $('#formDialog').find("form");
 
-    var allFields = $( [] ).add($('#eventName')).add($('#eventDescription')).add($('#eventLocation'));
+    var allFields = $( [] ).add($('#eventName')).add($('#eventDescription')).add($('#eventLocation')).add($('#eventNameError'))
+        .add($('#startDateError')).add($('#startTimeError')).add($('#endDateError')).add($('#endTimeError')).add($('#eventDescriptionError'))
+        .add($('#eventLocationError'));
 
     $('#formDialog').dialog('option', 'title', 'Create new Event');
     $("#formDialog").dialog({
