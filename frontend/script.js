@@ -488,6 +488,79 @@ function allDay() {
 
 }
 
+
+
+
+//Login Stuff
+var APP_CLIENT_ID = "aa39f4f6-379f-42c0-b62d-700bfcec3151";
+var REDIRECT_URL = "http://localhost/twonote";
+var access_token = "";
+var selectedNote = "";
+var newTitle = "";
+
+WL.Event.subscribe("auth.login", onLogin);
+WL.init({
+    client_id: APP_CLIENT_ID,
+    redirect_uri: REDIRECT_URL,
+    scope: "wl.signin office.onenote_update",
+    response_type: "token"
+});
+WL.ui({
+    name: "signin",
+    element: "signin"
+});
+function login(session){
+    if (!session.error) {
+        access_token = session.session.access_token;
+
+        onLoad();
+        WL.api({
+            path: "me",
+            method: "GET"
+        }).then(
+            function (response) {
+                document.getElementById("info").innerText =
+                    "Hello, " + response.first_name + " " + response.last_name + "!";
+                document.getElementById("userName").innerText =
+                    "Hello, " + response.first_name + " " + response.last_name + "!";
+            },
+            function (responseFailed) {
+                document.getElementById("info").innerText =
+                    "Error calling API: " + responseFailed.error.message;
+            }
+        );
+    }
+    else {
+        document.getElementById("info").innerText =
+            "Error signing in: " + session.error_description;
+    }
+}
+function onLoad(){
+    $("#list").html('');
+    $.ajax({
+        url: "http://localhost:3000/login",
+        type: "GET",
+        beforeSend: function (xhr) {
+            xhr.setRequestHeader('Authorization', 'Bearer ' + access_token);
+        },
+        success: function (data) {
+            var list = $("#list");
+            if (data.value != null) {
+                for (var i = 0; i < data.value.length; i++) {
+                    var noteID = data.value[i].id;
+                    list.append( '<li onclick="viewContent( \'' + noteID + '\' );" >' + data.value[i].title + '</li>');
+                }
+            }
+            $("#wrapper").show();
+            $("#dialog").dialog( "close" );
+        }
+    });
+}
+
+function logout(){
+
+}
+
 $(document).ready(function(){
 
     var form = $('#formDialog').find("form");
