@@ -283,12 +283,6 @@ function allDay() {
 
     //when all day is checked change the start date and end date of event
 
-    var dateObj = new Date();
-    var month = ("0" + (dateObj.getMonth() + 1)).slice(-2);
-    var day = ("0" + (dateObj.getDate())).slice(-2);
-    var year = dateObj.getUTCFullYear();
-    //newdate = year + "-" + month + "-" + day;
-
     $('#endDate').val($('#startDate').val());
     $('#endTime').val("23:59");
 
