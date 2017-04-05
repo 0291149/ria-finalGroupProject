@@ -324,13 +324,17 @@ function editEvent(id)
             var newAllDay = data.isAllDay;
             var newDescription = data.description;
             var newLocation = data.location;
+
+            var newID = data.eventId;
+
             console.log(newAllDay);
             $('#eventName').val(newTitle);
             $('#startDate').val(newStartDate);
-            $('#startTime').val();
-            $('#endDate').val(newEndDate);
             $('#startTime').val(newStartTime);
+            $('#endDate').val(newEndDate);
             $('#endTime').val(newEndTime);
+
+            $('#eventID').val(newID);
 
             if(newAllDay == "y"){
                 document.getElementById("allDay").checked = true;
@@ -347,14 +351,52 @@ function editEvent(id)
 
         }
     });
+
+    var form = $('#formDialog').find("form");
+
+    var allFields = $( [] ).add($('#eventName')).add($('#eventDescription')).add($('#eventLocation'));
+    var errorFields = $( [] ).add($('#eventNameError'))
+        .add($('#startDateError')).add($('#startTimeError')).add($('#endDateError')).add($('#endTimeError'))
+        .add($('#eventDescriptionError')).add($('#eventLocationError'));
     //populates form for editing event
     // $('#formDialog').dialog('option', 'title', 'Edit Event');
     $("#formDialog").dialog({
-        buttons: {
-            "Edit Event": updateEvent,
-            Cancel: function() {
-                $("#formDialog").dialog( "close" );
+        // buttons: {
+        //     "Edit Event": updateEvent,
+        //     Cancel: function() {
+        //         $("#formDialog").dialog( "close" );
+        //     }
+        //
+        //
+        // }
+
+        buttons: [
+            {
+                text: "Edit Event",
+                click: function () {
+                    if (validateFields()) {
+                        updateEvent();
+                        form[0].reset();
+                        allFields.removeClass("ui-state-error");
+                        errorFields.html("");
+                    }
+                }
+            },
+            {
+                text: "Cancel",
+                click: function () {
+                    $("#formDialog").dialog("close");
+                    form[ 0 ].reset();
+                    allFields.removeClass( "ui-state-error" )
+                    errorFields.html("");
+                }
             }
+        ],
+        Cancel: function () {
+            $("#formDialog").dialog("close");
+            form[ 0 ].reset();
+            allFields.removeClass( "ui-state-error" );
+            errorFields.html("");
         }
         // close: function() {
         //     form[ 0 ].reset();
@@ -366,26 +408,16 @@ function editEvent(id)
 
 }
 
-function updateEvent(id)
+function updateEvent()
 {
-    //ajax call to update event
-    // $(function(){
-        // $("#formDialog").dialog({
-        //     resizable:false,
-        //     height: "auto",
-        //     width: 400,
-        //     modal:true,
-        //     buttons:{
-        //         "Edit Event": function(){
+    var id = $('#eventID').val();
                     $.ajax({
-                        url: "http://localhost:3000/events",
+                        url: "http://localhost:3000/events/" + id,
                         method: "PUT",
                         data: {
                             title: $('#eventName').val(),
-                            startDate: $('#startDate').val(),
-                            //startTime: $('#startTime').val(),
-                            endDate: $('#endDate').val(),
-                            //endTime: $('#endTime').val(),
+                            startDate: $('#startDate').val() + " " + $('#startTime').val(),
+                            endDate: $('#endDate').val() + " " + $('#endTime').val(),
                             isAllDay: allDay,
                             description: $('#eventDescription').val(),
                             location: $('#eventLocation').val(),
@@ -396,7 +428,6 @@ function updateEvent(id)
                             readEvents();
                         }
                     });
-                    $(this).dialog('close');
 
                 // },
                 // Cancel: function(){
