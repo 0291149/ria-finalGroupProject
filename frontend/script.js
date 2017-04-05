@@ -410,6 +410,14 @@ function editEvent(id)
 
 function updateEvent()
 {
+    var allDay;
+    if (document.getElementById("allDay").checked){
+        allDay = 'y';
+    }
+    else{
+        allDay = 'n';
+    }
+
     var id = $('#eventID').val();
                     $.ajax({
                         url: "http://localhost:3000/events/" + id,
