@@ -93,6 +93,49 @@ function displayError()
     $("#errors").html("There was an error processing your request. Please try again later.");
 }
 
+function validateFields()
+{
+    isValid = true;
+
+    if($("#eventName").val().length == 0)
+    {
+        $("#eventNameError").html("Please fill out this field.");
+        isValid = false;
+    }
+    if($("#startDate").val().length == 0)
+    {
+        $("#startDateError").html("Please fill out this field.");
+        isValid = false;
+    }
+    if($("#startTime").val().length == 0)
+    {
+        $("#startTimeError").html("Please fill out this field.");
+        isValid = false;
+    }
+    if($("#endDate").val().length == 0)
+    {
+        $("#endDateError").html("Please fill out this field.");
+        isValid = false;
+    }
+    if($("#endTime").val().length == 0)
+    {
+        $("#endTimeError").html("Please fill out this field.");
+        isValid = false;
+    }
+    if($("#eventDescription").val().length == 0)
+    {
+        $("#eventDescriptionError").html("Please fill out this field.");
+        isValid = false;
+    }
+    if($("#eventLocation").val().length == 0)
+    {
+        $("#eventLocationError").html("Please fill out this field.");
+        isValid = false;
+    }
+
+    return isValid;
+}
+
 /*CRUD functions*/
 
 function addEvent()

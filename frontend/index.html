@@ -76,7 +76,7 @@
         <div id="greetings">
             <h1>Events</h1>
             <p>A miniature description about how fabulous our event app thing is.</p>
-            <p id="errors"></p>
+            <p id="errors" class="errorMe"></p>
             <button id="createNew">Create New Event</button>
         </div>
 
@@ -85,22 +85,27 @@
                 <div>
                     <label for="eventName">Event Name</label>
                     <input type="text" name="eventName" id="eventName" class="text ui-widget-content ui-corner-all">
+                    <span id="eventNameError"></span>
                 </div>
                 <div>
                     <label for="startDate">Start Date</label>
                     <input type="date" name="startDate" id="startDate" class="text ui-widget-content ui-corner-all">
+                    <span id="startDateError" class="errorMe"></span>
                 </div>
                 <div>
                     <label for="startTime">Start Time</label>
                     <input type="time" name="startTime" id="startTime" class="text ui-widget-content ui-corner-all">
+                    <span id="startTimeError" class="errorMe"></span>
                 </div>
                 <div>
                     <label for="endDate">End Date</label>
                     <input type="date" name="endDate" id="endDate" class="text ui-widget-content ui-corner-all">
+                    <span id="endDateError" class="errorMe"></span>
                 </div>
                 <div>
                     <label for="endTime">End Time</label>
                     <input type="time" name="endTime" id="endTime" class="text ui-widget-content ui-corner-all">
+                    <span id="endTimeError" class="errorMe"></span>
                 </div>
                 <div>
                     <label for="allDay">All Day</label>
@@ -109,10 +114,12 @@
                 <div>
                     <label for="eventDescription">Event Description</label>
                     <textarea name="eventDescription" id="eventDescription" class="text ui-widget-content ui-corner-all"></textarea>
+                    <span id="eventDescriptionError" class="errorMe"></span>
                 </div>
                 <div>
                     <label for="eventLocation">Event Location</label>
                     <input type="text" name="eventLocation" id="eventLocation" class="text ui-widget-content ui-corner-all">
+                    <span id="eventLocationError" class="errorMe"></span>
                 </div>
                 <!-- Allow form submission with keyboard without duplicating the dialog button -->
                     <input type="submit" tabindex="-1" style="position:absolute; top:-1000px">
