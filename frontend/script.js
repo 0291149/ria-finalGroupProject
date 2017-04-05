@@ -169,11 +169,14 @@ function addEvent()
 
     var form = $('#formDialog').find("form");
 
-    var allFields = $( [] ).add($('#eventName')).add($('#eventDescription')).add($('#eventLocation')).add($('#eventNameError'))
-        .add($('#startDateError')).add($('#startTimeError')).add($('#endDateError')).add($('#endTimeError')).add($('#eventDescriptionError'))
-        .add($('#eventLocationError'));
+    var allFields = $( [] ).add($('#eventName')).add($('#eventDescription')).add($('#eventLocation'));
+    var errorFields = $( [] ).add($('#eventNameError'))
+        .add($('#startDateError')).add($('#startTimeError')).add($('#endDateError')).add($('#endTimeError'))
+        .add($('#eventDescriptionError')).add($('#eventLocationError'));
+
 
     $('#formDialog').dialog('option', 'title', 'Create new Event');
+    $('#formDialog').dialog();
     $("#formDialog").dialog({
         buttons: [
             {
@@ -183,13 +186,26 @@ function addEvent()
                         createEvent();
                         form[0].reset();
                         allFields.removeClass("ui-state-error");
+                        errorFields.html("");
                     }
+                }
+            },
+            {
+                text: "Cancel",
+                click: function () {
+                    $("#formDialog").dialog("close");
+                    form[ 0 ].reset();
+                    allFields.removeClass( "ui-state-error" )
+                    errorFields.html("");
                 }
             }
         ],
         Cancel: function () {
             $("#formDialog").dialog("close");
-        },
+            form[ 0 ].reset();
+            allFields.removeClass( "ui-state-error" );
+            errorFields.html("");
+        }
     });
     $("#formDialog").dialog( "open" );
 }
@@ -413,6 +429,13 @@ function allDay() {
 
 $(document).ready(function(){
 
+    var form = $('#formDialog').find("form");
+
+    var allFields = $( [] ).add($('#eventName')).add($('#eventDescription')).add($('#eventLocation'));
+    var errorFields = $( [] ).add($('#eventNameError'))
+        .add($('#startDateError')).add($('#startTimeError')).add($('#endDateError')).add($('#endTimeError'))
+        .add($('#eventDescriptionError')).add($('#eventLocationError'));
+
     //set up the dialogs and event listeners
 
     //tabs
@@ -422,6 +445,7 @@ $(document).ready(function(){
     //dialogs
     $("#formDialog").dialog({
         autoOpen: false,
+        width: 500,
         modal: true
     });
 
@@ -437,6 +461,9 @@ $(document).ready(function(){
         alert("I logged in.");
     });*/
     $( "#createNew" ).click(function() {
+        form[0].reset();
+        allFields.removeClass("ui-state-error");
+        errorFields.html("");
         addEvent();
     });
 

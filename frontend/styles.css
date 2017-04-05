@@ -46,3 +46,7 @@ tbody tr:nth-child(2n)
 .errorMe {
     color: #901414;
 }
+
+.ui-dialog-titlebar-close {
+    display: none;
+}
