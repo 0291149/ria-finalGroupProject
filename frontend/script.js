@@ -119,6 +119,30 @@ function validateFields()
         isValid = false;
     }
 
+    if ($('#startDate').val() > $('#endDate').val()) {
+        $("#eventLocationError").html("Your end date is before the start date.");
+        isValid = false;
+    }
+
+    var dateObj = new Date();
+    var month = ("0" + (dateObj.getMonth() + 1)).slice(-2);
+    var day = ("0" + (dateObj.getDate())).slice(-2);
+    var year = dateObj.getUTCFullYear();
+    var currentDate = year + "-" + month + "-" + day;
+
+    var d = new Date(),
+        h = d.getHours(),
+        m = d.getMinutes();
+        if(h < 10) h = '0' + h;
+        if(m < 10) m = '0' + m;
+        var time = h + ":" + m;
+
+    if($('#endDate').val() + " " + $('#endTime').val() < currentDate + " " + time){
+        $("#endDateError").html("Your event has already ended");
+        isValid = false;
+    }
+
+
     return isValid;
 }
 
@@ -127,25 +151,31 @@ function validateFields()
 function addEvent()
 {
 
+    //populates form for adding event
+
     var form = $('#formDialog').find("form");
 
     var allFields = $( [] ).add($('#eventName')).add($('#eventDescription')).add($('#eventLocation'));
 
     $('#formDialog').dialog('option', 'title', 'Create new Event');
     $("#formDialog").dialog({
-        buttons: {
-            "Create new Event": createEvent,
-            Cancel: function() {
-                $("#formDialog").dialog( "close" );
+        buttons: [
+            {
+                text: "Create new Event",
+                click: function () {
+                    if (validateFields()) {
+                        createEvent();
+                        form[0].reset();
+                        allFields.removeClass("ui-state-error");
+                    }
+                }
             }
+        ],
+        Cancel: function () {
+            $("#formDialog").dialog("close");
         },
-        close: function() {
-            form[ 0 ].reset();
-            allFields.removeClass( "ui-state-error" );
-        }
     });
     $("#formDialog").dialog( "open" );
-    //populates form for adding event
 }
 
 function createEvent()
@@ -163,10 +193,8 @@ function createEvent()
         method: "POST",
         data: {
             title: $('#eventName').val(),
-            startDate: $('#startDate').val(),
-            //startTime: $('#startTime').val(),
-            endDate: $('#endDate').val(),
-            //endTime: $('#endTime').val(),
+            startDate: $('#startDate').val() + " " + $('#startTime').val(),
+            endDate: $('#endDate').val() + " " + $('#endTime').val(),
             isAllDay: allDay,
             description: $('#eventDescription').val(),
             location: $('#eventLocation').val(),
@@ -357,7 +385,7 @@ function deleteEvent(id)
 function allDay() {
 
     //when all day is checked change the start date and end date of event
-
+    $('#startTime').val("00:00");
     $('#endDate').val($('#startDate').val());
     $('#endTime').val("23:59");
 
