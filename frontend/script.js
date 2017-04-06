@@ -233,7 +233,7 @@ function createEvent()
     }
     //ajax call to create
     $.ajax({
-        url: "http://localhost:3000/events",
+        url: "http://localhost:3000/users/" + $('#userId').val() + "/events/",
         method: "POST",
         data: {
             title: $('#eventName').val(),
@@ -242,7 +242,7 @@ function createEvent()
             isAllDay: allDay,
             description: $('#eventDescription').val(),
             location: $('#eventLocation').val(),
-            userId: 1 //hardcoded userId for now until we get authentication working
+            userId: $('#userId').val()
         },
         success: function(data){
             $("#formDialog").dialog( "close" );
@@ -255,7 +255,7 @@ function readEvents()
 {
     //ajax call to read all events
     $.ajax({
-        url: "http://localhost:3000/events",
+        url: "http://localhost:3000/users/" + $('#userId').val() + "/events/",
         method: "GET",
         success: function(data){
 
@@ -310,7 +310,7 @@ function readEvents()
 function editEvent(id)
 {
     $.ajax({
-        url: "http://localhost:3000/events/" + id,
+        url: "http://localhost:3000/users/" + $('#userId').val() + "/events/" + id,
         method: "GET",
 
         success: function (data) {
@@ -420,7 +420,7 @@ function updateEvent()
 
     var id = $('#eventID').val();
                     $.ajax({
-                        url: "http://localhost:3000/events/" + id,
+                        url: "http://localhost:3000/users/" + $('#userId').val() + "/events/" + id,
                         method: "PUT",
                         data: {
                             title: $('#eventName').val(),
@@ -460,7 +460,7 @@ function deleteEvent(id)
             buttons:{
                 "Delete Event": function(){
                     $.ajax({
-                        url:"http://localhost:3000/events/" + id,
+                        url:"http://localhost:3000/users/" + $('#userId').val() + "/events/" + id,
                         type:"Delete",
                         success: function(result){
                             readEvents();
