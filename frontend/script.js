@@ -488,77 +488,81 @@ function allDay() {
 
 }
 
+//user Methods
+function login(){
 
-
-
-//Login Stuff
-var APP_CLIENT_ID = "aa39f4f6-379f-42c0-b62d-700bfcec3151";
-var REDIRECT_URL = "http://localhost/twonote";
-var access_token = "";
-var selectedNote = "";
-var newTitle = "";
-
-WL.Event.subscribe("auth.login", onLogin);
-WL.init({
-    client_id: APP_CLIENT_ID,
-    redirect_uri: REDIRECT_URL,
-    scope: "wl.signin office.onenote_update",
-    response_type: "token"
-});
-WL.ui({
-    name: "signin",
-    element: "signin"
-});
-function login(session){
-    if (!session.error) {
-        access_token = session.session.access_token;
-
-        onLoad();
-        WL.api({
-            path: "me",
-            method: "GET"
-        }).then(
-            function (response) {
-                document.getElementById("info").innerText =
-                    "Hello, " + response.first_name + " " + response.last_name + "!";
-                document.getElementById("userName").innerText =
-                    "Hello, " + response.first_name + " " + response.last_name + "!";
-            },
-            function (responseFailed) {
-                document.getElementById("info").innerText =
-                    "Error calling API: " + responseFailed.error.message;
-            }
-        );
-    }
-    else {
-        document.getElementById("info").innerText =
-            "Error signing in: " + session.error_description;
-    }
-}
-function onLoad(){
-    $("#list").html('');
     $.ajax({
         url: "http://localhost:3000/login",
-        type: "GET",
-        beforeSend: function (xhr) {
-            xhr.setRequestHeader('Authorization', 'Bearer ' + access_token);
+        method: "GET",
+        headers:{
+            'email': $('#loginEmail').val(),
+            'password': $('#loginPassword').val()
         },
         success: function (data) {
-            var list = $("#list");
-            if (data.value != null) {
-                for (var i = 0; i < data.value.length; i++) {
-                    var noteID = data.value[i].id;
-                    list.append( '<li onclick="viewContent( \'' + noteID + '\' );" >' + data.value[i].title + '</li>');
-                }
-            }
-            $("#wrapper").show();
-            $("#dialog").dialog( "close" );
+            // alert("Yo wazzup! Look who made it to the party... event");
+            displayContent(data);
         }
     });
 }
 
-function logout(){
+function displayContent(data){
+    $('#loggedOut').addClass('hideMe');
+    $('#loggedIn').removeClass('hideMe');
+    $('#loggedInAs').html(data.name);
+    $('#userId').val(data.userId);
+    readEvents();
 
+}
+
+function logout(){
+    $('#loggedOut').removeClass('hideMe');
+    $('#loggedIn').addClass('hideMe');
+    $('#loggedInAs').html('');
+    $('#userId').val('');
+    $('#eventsList').html('');
+}
+
+function signUp(){
+
+    // {
+    //     "name":"Crystal",
+    //     "email":"crystalwater@gmail.com",
+    //     "password":"passphrase"
+    // }
+    jsonData = {
+        "name": $('#signupName').val(),
+        "email": $('#signupEmail').val(),
+        "password": $('#signupPassword').val()
+    };
+    //jsonData = JSON.stringify(jsonData);
+
+    $.ajax({
+        url: "http://localhost:3000/users",
+        method: "POST",
+        data: jsonData,
+        success: function (data) {
+
+            //Successfully added a user
+            $('#signupName').val("");
+            $('#signupEmail').val("");
+            $('#signupPassword').val("");
+
+            //fetch user data
+            fetchUserData(data);
+        }
+    });
+}
+
+function fetchUserData(data){
+    $.ajax({
+        url: "http://localhost:3000/users/" + data.userId,
+        method: "GET",
+        success: function (data) {
+
+
+            displayContent(data);
+        }
+    });
 }
 
 $(document).ready(function(){
@@ -588,8 +592,16 @@ $(document).ready(function(){
     });
 
     //event listeners
+    $('#loginButton').click(function(){
+        login();
+    });
+
     $("#logout").click(function(){
-        alert("I logged out.");
+        logout();
+    });
+
+    $("#signupButton").click(function(){
+        signUp();
     });
     /*$("#login").click(function(){
         alert("I logged in.");
@@ -606,6 +618,6 @@ $(document).ready(function(){
     });
 
     //auto run read events
-    readEvents();
+    // readEvents();
 
 });

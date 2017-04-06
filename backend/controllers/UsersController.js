@@ -92,7 +92,7 @@ module.exports.store = function(req,res,next){
 
             if(err) return next(err);
 
-            res.json({message: 'User Created'});
+            res.json({message: 'User Created', userId: results.insertId});
 
         });
 
