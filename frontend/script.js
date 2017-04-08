@@ -295,6 +295,11 @@ function readEvents()
                 $("#eventsList").html(htmlString);
 
             }
+            else
+            {
+                //empty out the table if there are no events
+                $('#eventsList').empty();
+            }
 
             $("#errors").html("");
 
@@ -462,7 +467,7 @@ function deleteEvent(id)
                     $.ajax({
                         url:"http://localhost:3000/users/" + $('#userId').val() + "/events/" + id,
                         type:"Delete",
-                        success: function(result){
+                        success: function(data){
                             readEvents();
                         }
                     });
