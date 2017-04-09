@@ -3,10 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="6844fc02-c3a4-4567-a123-91a7da07a847" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controllers/EventsUserController.js" afterPath="$PROJECT_DIR$/controllers/EventsUserController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../frontend/index.html" afterPath="$PROJECT_DIR$/../frontend/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../frontend/script.js" afterPath="$PROJECT_DIR$/../frontend/script.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../frontend/styles.css" afterPath="$PROJECT_DIR$/../frontend/styles.css" />
     </list>
     <ignored path="backend.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -335,7 +331,7 @@
       <workItem from="1491402655000" duration="815000" />
       <workItem from="1491415132152" duration="4332000" />
       <workItem from="1491495244543" duration="874000" />
-      <workItem from="1491695503835" duration="1019000" />
+      <workItem from="1491695503835" duration="1110000" />
     </task>
     <task id="LOCAL-00001" summary="removed some empty lines and added .gitignore">
       <created>1491238222268</created>
@@ -379,11 +375,18 @@
       <option name="project" value="LOCAL" />
       <updated>1491419116686</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Minor error changing. Not much that helped.&#10;Added some css for the &quot;buttons&quot; (divs) in the forms for login and signup.">
+      <created>1491697142626</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1491697142626</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="21426000" />
+    <option name="totallyTimeSpent" value="21517000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="28" width="1922" height="1019" extended-state="6" />
@@ -394,7 +397,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3283582" sideWeight="0.502584" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295063" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.326062" sideWeight="0.49741602" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.326062" sideWeight="0.49741602" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Mongo Explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32795697" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -427,7 +430,8 @@
     <MESSAGE value="CRUD on users is working. Please note that password needs to be changed to 255 instead of being at 40." />
     <MESSAGE value="Added ORDER BY to index method on events." />
     <MESSAGE value="Added in events based off of users.&#10;Added in /login which checks to see if the username and password are correct." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added in events based off of users.&#10;Added in /login which checks to see if the username and password are correct." />
+    <MESSAGE value="Minor error changing. Not much that helped.&#10;Added some css for the &quot;buttons&quot; (divs) in the forms for login and signup." />
+    <option name="LAST_COMMIT_MESSAGE" value="Minor error changing. Not much that helped.&#10;Added some css for the &quot;buttons&quot; (divs) in the forms for login and signup." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
