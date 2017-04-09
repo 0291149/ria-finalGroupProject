@@ -21,6 +21,8 @@ module.exports.login = function(req, res, next){
 
             if(err) return next(err);
 
+            if(results[0] == null || results[0].password == null) return next(err)
+
             bcrypt.compare(password, results[0].password, function(err, isMatch){
                 if(err) return next(err);
 

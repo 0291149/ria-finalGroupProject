@@ -1,17 +1,9 @@
+/*Table*/
+
 .rightWing {
     /*float: right;*/
     text-align: right;
 }
-
-/*
-.leftWing {
-    float: left;
-}
-*/
-
-/*.rowOne {
-    border-top: 1px solid #000000;
-}*/
 
 .rowTwo {
     border-bottom: 1px solid #000000;
@@ -25,6 +17,18 @@ tbody tr:nth-child(2n)
 {
     background-color: #c8e6cb;
 }
+
+/*
+.leftWing {
+    float: left;
+}
+*/
+
+/*.rowOne {
+    border-top: 1px solid #000000;
+}*/
+
+/*Banners, Erros, Current Event, Hiding, Dialog Title Bar, Buttons made from text*/
 
 .banner h3 {
     display: inline-block;
@@ -49,4 +53,12 @@ tbody tr:nth-child(2n)
 
 .ui-dialog-titlebar-close {
     display: none;
+}
+
+.text-btn {
+    background-color: #d6d6d6;
+    width: 10%;
+    padding: 5px 5px 5px 5px;
+    text-align: center;
+    border: 1px solid #ababab;
 }

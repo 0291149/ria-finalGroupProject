@@ -506,6 +506,11 @@ function login(){
         success: function (data) {
             // alert("Yo wazzup! Look who made it to the party... event");
             displayContent(data);
+        },
+        error: function(err)
+        {
+            //alert("Found an error");
+            displayError();
         }
     });
 }
@@ -554,6 +559,11 @@ function signUp(){
 
             //fetch user data
             fetchUserData(data);
+        },
+        error: function(err)
+        {
+            //alert("Found an error");
+            displayError();
         }
     });
 }
