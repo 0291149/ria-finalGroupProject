@@ -25,6 +25,8 @@ router.route('/:userID')
     .put(usersController.update)
     .delete(usersController.destroy);
 
+
+//based on the userID, do event calls
 router.route('/:userID/events')
     .get(eventsUsersController.index)
     .post(eventsUsersController.store);

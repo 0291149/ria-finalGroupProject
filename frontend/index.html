@@ -29,6 +29,8 @@
             <!--<div class="user"><button>Login</button></div>-->
         </div>
 
+        <p id="errorsLoggedOut" class="errorMe"></p>
+
         <div id="toLogIn">
             <div id="tabs">
                 <ul>
@@ -50,12 +52,15 @@
                     <form>
                         <div>
                             <label for="signupName">Name: </label><input type="text" id="signupName" name="signupName" />
+                            <span id="signupNameError" class="errorMe"></span>
                         </div>
                         <div>
                             <label for="signupEmail">Email: </label><input type="email" id="signupEmail" name="signupEmail" />
+                            <span id="signupEmailError" class="errorMe"></span>
                         </div>
                         <div>
                             <label for="signupPassword">Password: </label><input type="password" id="signupPassword" name="signupPassword" />
+                            <span id="signupPasswordError" class="errorMe"></span>
                         </div>
                         <div id="signupButton" class="text-btn">Sign Up</div>
                     </form>

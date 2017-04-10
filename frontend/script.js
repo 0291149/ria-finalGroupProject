@@ -7,9 +7,11 @@
 function DateConverter(data)
 {
 
+    //brings in the date and converts it to string
     var date = new Date(data);
     var stringDate = date.toDateString();
 
+    //figures out how many minutes there are. If the number is under ten, it adds a 0 in front.
     var minutes = "";
     if(date.getMinutes() < 10)
     {
@@ -20,27 +22,33 @@ function DateConverter(data)
         minutes =  date.getMinutes();
     }
 
+    //tacks on the time to the string
     stringDate += " " + date.getHours() + ":" + minutes;
 
+    //returns the date
     return stringDate.toString();
 
 }
 
 function DateSplitter(date)
 {
+    //splits the date according to month, date, and the full year
     var d = new Date(date),
         month = '' + (d.getMonth() + 1),
         day = '' + d.getDate(),
         year = d.getFullYear();
 
+    //tacks on a 0 if the number is less than 10
     if (month.length < 2) month = '0' + month;
     if (day.length < 2) day = '0' + day;
 
+    //return date
     return [year, month, day].join('-');
 }
 
 function timeSplitter(date)
 {
+    //splits up the time
     var time = new Date(date);
     var hour = time.getHours();
     var minute = time.getMinutes();
@@ -50,7 +58,6 @@ function timeSplitter(date)
     return [hour,minute].join(':');
 
 }
-
 
 function displayDate(data, className)
 {
@@ -172,8 +179,32 @@ function validateFields()
     return isValid;
 }
 
+function validateSignUp()
+{
+    isValid = true;
+
+    if($("#signupName").val().length == 0)
+    {
+        $("#signupNameError").html("Please fill out this field.");
+        isValid = false;
+    }
+    if($("#signupEmail").val().length == 0)
+    {
+        $("#signupEmailError").html("Please fill out this field.");
+        isValid = false;
+    }
+    if($("#signupPassword").val().length == 0)
+    {
+        $("#signupPasswordError").html("Please fill out this field.");
+        isValid = false;
+    }
+
+    return isValid;
+}
+
 /*CRUD functions*/
 
+//opens up the form, and clears it of any existing data / sets it up for being able to add
 function addEvent()
 {
 
@@ -222,6 +253,7 @@ function addEvent()
     $("#formDialog").dialog( "open" );
 }
 
+//sends the ajax post call to the backend
 function createEvent()
 {
     var allDay;
@@ -312,6 +344,7 @@ function readEvents()
     });
 }
 
+//opens up the form, pre-populates data
 function editEvent(id)
 {
     $.ajax({
@@ -413,6 +446,7 @@ function editEvent(id)
 
 }
 
+//sends the ajax put call to the backend
 function updateEvent()
 {
     var allDay;
@@ -484,7 +518,8 @@ function deleteEvent(id)
 
 }
 
-function allDay() {
+function allDay()
+{
 
     //when all day is checked change the start date and end date of event
     $('#startTime').val("00:00");
@@ -494,7 +529,8 @@ function allDay() {
 }
 
 //user Methods
-function login(){
+function login()
+{
 
     $.ajax({
         url: "http://localhost:3000/login",
@@ -505,12 +541,13 @@ function login(){
         },
         success: function (data) {
             // alert("Yo wazzup! Look who made it to the party... event");
+            $("#errorsLoggedOut").html("");
             displayContent(data);
         },
         error: function(err)
         {
             //alert("Found an error");
-            displayError();
+            $("#errorsLoggedOut").html("There was an error processing your request. Please try again later.");
         }
     });
 }
@@ -534,6 +571,11 @@ function logout(){
 
 function signUp(){
 
+    if(!validateSignUp())
+    {
+        return;
+    }
+
     // {
     //     "name":"Crystal",
     //     "email":"crystalwater@gmail.com",
@@ -552,6 +594,8 @@ function signUp(){
         data: jsonData,
         success: function (data) {
 
+            $("#errorsLoggedOut").html("");
+
             //Successfully added a user
             $('#signupName').val("");
             $('#signupEmail').val("");
@@ -563,7 +607,7 @@ function signUp(){
         error: function(err)
         {
             //alert("Found an error");
-            displayError();
+            $("#errorsLoggedOut").html("There was an error processing your request. Please try again later.");
         }
     });
 }
@@ -580,6 +624,7 @@ function fetchUserData(data){
     });
 }
 
+//document.ready function
 $(document).ready(function(){
 
     var form = $('#formDialog').find("form");
